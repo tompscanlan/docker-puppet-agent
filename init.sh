@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#sudo dnsmasq --conf-file=./dnsmasq.conf
-#docker build -t "pabase" .
-
-
 agent=$1
 [ -n "$agent" ] || exit 1
 
