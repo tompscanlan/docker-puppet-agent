@@ -18,6 +18,11 @@ ADD docker_rsa.pub /root/.ssh/authorized_keys
 RUN chmod 600 /root/.ssh/authorized_keys
 RUN chown root:root /root/.ssh/authorized_keys
 
+
+RUN mkdir -p /etc/facter/facts.d
+RUN echo "is_virtual=true" >> /etc/facter/facts.d/docker.txt
+RUN echo "virtual=docker"  >> /etc/facter/facts.d/docker.txt
+
 EXPOSE 22 8140 8081 443
 CMD supervisord -n -c /opt/supervisor.conf
 #CMD supervisord -c /opt/supervisor.conf && /bin/bash
