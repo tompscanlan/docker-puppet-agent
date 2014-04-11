@@ -10,11 +10,17 @@ ssh_port=$(docker inspect --format='{{(index (index .NetworkSettings.Ports "22/t
 
 ssh="ssh -i docker_rsa -o StrictHostKeyChecking=no -p $ssh_port root@localhost"
 
-$ssh "curl -k https://puppet:8140/packages/current/install.bash | bash"
-
+until $ssh "/bin/true" ; do 
+	sleep 1;
+done
 echo "pre-sign cert for $agent"
 ./pre-sign.sh $agent > $agent.tar
+
+$ssh " rm /usr/sbin/policy-rc.d;
+	curl -k https://puppet:8140/packages/current/install.bash | bash"
+
 cat $agent.tar | $ssh "dir=\$( puppet config print ssldir ) ;
+mv \$dir /tmp;
 mkdir -p \$dir;
 cd \$dir;
 tar -xf - ; "
