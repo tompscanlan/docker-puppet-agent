@@ -1,6 +1,6 @@
-10.10.0.5 puppet.example.com puppet
-10.10.0.6 puppet2.example.com puppet2
-10.10.0.7 puppet3.example.com puppet3
+192.168.1.55 puppet.example.com puppet
+192.168.1.56 puppet2.example.com puppet2
+192.168.1.57 puppet3.example.com puppet3
 10.10.0.20 pa0.example.com pa0
 10.10.0.21 pa1.example.com pa1
 10.10.0.22 pa2.example.com pa2
